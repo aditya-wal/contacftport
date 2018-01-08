@@ -1,6 +1,6 @@
-%h2
-  = link_to 'contacts/gmail' do
-    = image_tag 'gmail_logo', style: "#20x20"
+.image_container
+  = link_to 'https://localhost:3000/contacts/gmail' do
+    = image_tag 'gmail_logo'
 
 - if @contacts.present?
   %table
@@ -11,7 +11,7 @@
     %tbody
       - @contacts.each do |contact|
         %tr
-          %td= contact[:name]
-          %td= contact[:emails][0][:email]
+          %td= contact[:name] if contact[:name].present?
+          %td= contact[:emails][0][:email] if contact[:emails].present?
 - else
   %p No contacts found
